@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'java -jar target/myweb.war'
+                sh 'nohup mvn spring-boot:run'
             }
         }
         stage('Sanity') {
