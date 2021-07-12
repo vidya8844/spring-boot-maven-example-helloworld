@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Sanity') {
             steps {
-                echo 'Waiting to boot up application'.
+                sh 'echo Waiting to boot up application'.
                 sh 'sleep 30s'
                 sh 'curl -X GET http://65.1.65.1:8090/index.html'
             }
