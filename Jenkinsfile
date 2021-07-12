@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                    sh 'nohup mvnw spring-boot:run -Dserver.port=8090 &'
+                    sh 'nohup mvn spring-boot:run -Dserver.port=8090 &'
                 } 
             }
         }
