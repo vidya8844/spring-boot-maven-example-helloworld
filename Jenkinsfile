@@ -21,7 +21,8 @@ pipeline {
             steps {
                 withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
                     sh 'nohup mvn spring-boot:run -Dserver.port=8090 &'
-                } 
+                }
+                sh 'sleep 30s'
             }
         }
         stage('Sanity') {
