@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'fuser -k 8090/tcp'
+                sh 'sudo ss -ltp | grep 8090'
                 sh 'sleep 15'
                 sh 'mvn clean package'
                 //sh 'mv /var/lib/jenkins/workspace/spring-boot/target/SpringBootMavenExample-1.3.5.RELEASE.war target/myweb.war'
