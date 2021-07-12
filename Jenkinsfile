@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pkill -f \'java -jar\''
+                sh 'killall java'
+                sh 'sleep 15'
                 sh 'mvn clean package'
                 //sh 'mv /var/lib/jenkins/workspace/spring-boot/target/SpringBootMavenExample-1.3.5.RELEASE.war target/myweb.war'
                 sh 'echo build sucess'
