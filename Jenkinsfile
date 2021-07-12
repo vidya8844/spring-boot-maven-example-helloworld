@@ -21,5 +21,10 @@ pipeline {
                 sh 'java -jar  /var/lib/jenkins/workspace/spring-boot/target/SpringBootMavenExample-1.3.5.RELEASE.war'
             }
         }
+        stage('Sanity') {
+            steps {
+                sh 'curl -X GET http://65.1.65.1:8090/index.html'
+            }
+        }
     }
 }
