@@ -19,7 +19,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'nohup mvn spring-boot:run'
+                sh "pid=\$(lsof -i:8090 -t); kill -TERM \$pid " 
+                  + "|| kill -KILL \$pid"
+                withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                    sh 'nohup mvnw spring-boot:run -Dserver.port=8090 &'
+                } 
             }
         }
         stage('Sanity') {
