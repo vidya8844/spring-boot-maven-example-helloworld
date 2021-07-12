@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean package'
-                sh 'mv */target/*.war target/myweb.war'
+                //sh 'mv /var/lib/jenkins/workspace/spring-boot/target/SpringBootMavenExample-1.3.5.RELEASE.war target/myweb.war'
                 sh 'echo build sucess'
             }
         }
