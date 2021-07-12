@@ -7,8 +7,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ss -ltp | grep 8090'
-                sh 'sleep 15'
                 sh 'mvn clean package'
                 //sh 'mv /var/lib/jenkins/workspace/spring-boot/target/SpringBootMavenExample-1.3.5.RELEASE.war target/myweb.war'
                 sh 'echo build sucess'
@@ -30,6 +28,7 @@ pipeline {
             steps {
                 sh 'sleep 30'
                 sh 'curl -X GET http://65.1.65.1:8090/index.html'
+                sh 'netstat -lp | grep 8090'
             }
         }
     }
